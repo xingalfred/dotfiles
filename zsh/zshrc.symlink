@@ -11,7 +11,7 @@ for file in $DOTFILES/*/*.zsh; do
 done
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/alfred/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
