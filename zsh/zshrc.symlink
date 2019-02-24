@@ -1,20 +1,26 @@
 export DOTFILES=$HOME/.dotfiles
 export EDITOR='vim'
 
+# update bundles when running for first time or list of plugins has been updated
 if [[ ! $DOTFILES/antibody/load.sh -nt $DOTFILES/antibody/zsh_plugins ]]; then
     $DOTFILES/antibody/init.sh
 fi
+
+# load plugins
 source $DOTFILES/antibody/load.sh
 
 for file in $DOTFILES/*/*.zsh; do
     source $file
 done
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.zshrc'
+zstyle ':completion:*' menu select
 
 autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 
-zstyle ':completion:*' menu select
+for dump in $HOME/.zcompdump(#qN.m1); do
+    compinit
+    if [[ -s "$dump" && (! -s "$dump.zwc" || "$dump" -nt "$dump.zwc") ]]; then
+        zcompile "$dump"
+    fi
+done
+compinit -C
