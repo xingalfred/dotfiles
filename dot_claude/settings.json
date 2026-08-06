@@ -8,5 +8,10 @@
     "OTEL_METRICS_EXPORTER": "none",
     "OTEL_LOGS_EXPORTER": "none",
     "OTEL_TRACES_EXPORTER": "none"
+  },
+  "effortLevel": "medium",
+  "enabledPlugins": {
+    "caveman@caveman": true,
+    "ponytail@ponytail": true
   }
 }
