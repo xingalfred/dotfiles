@@ -1,1 +1,11 @@
 bleopt prompt_ps1_transient=trim
+
+# RET runs the command even when the buffer spans multiple lines (e.g. pasted
+# text). Incomplete shell syntax still inserts a newline instead of running.
+ble-bind -m emacs -f 'C-m' 'accept-line syntax'
+ble-bind -m emacs -f 'RET' 'accept-line syntax'
+ble-bind -m vi_imap -f 'C-m' 'accept-line syntax'
+ble-bind -m vi_imap -f 'RET' 'accept-line syntax'
+
+# Hide the "-- MULTILINE --" mode indicator
+bleopt keymap_emacs_mode_string_multiline=
